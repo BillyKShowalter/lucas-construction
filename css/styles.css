@@ -1,0 +1,281 @@
+/*
+  Lucas Construction - Shared Site Styles
+  Replace color variables below to quickly reskin the entire site.
+*/
+:root {
+  /* Brand palette matched to the business card */
+  --lc-primary: #0b0b0b;      /* deep black for logo and headings */
+  --lc-secondary: #c62828;    /* red accent (phone/cta) - keep for strong CTAs */
+  --lc-accent: #d07a2a;       /* warm accent (replacement for blueprint blue) */
+  --lc-bg: #fbfaf7;           /* warm off-white paper-like background (replaces blueprint blue) */
+  --lc-text: #222222;         /* primary body text color */
+  --lc-white: #FFFFFF;
+  /* enhanced blueprint: fine grid, larger cross-lines, and subtle paper grain */
+  /* stronger blueprint: increase opacities so the pattern is visible on most screens */
+  --lc-blueprint-grid: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%231e73be' stroke-width='1' stroke-opacity='0.30'><path d='M0 20 L120 20 M20 0 L20 120'/></g></svg>");
+  --lc-blueprint-cross: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360'><g fill='none' stroke='%231e73be' stroke-width='2' stroke-opacity='0.22'><path d='M0 60 L360 60 M60 0 L60 360 M0 300 L360 300 M300 0 L300 360'/></g></svg>");
+  --lc-paper-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><rect width='20' height='20' fill='%23eaf3ff'/><g fill='%23000000' fill-opacity='0.06'><circle cx='3' cy='4' r='0.8'/><circle cx='10' cy='12' r='0.8'/><circle cx='16' cy='6' r='0.8'/></g></svg>");
+}
+
+html,
+body {
+  background-color: var(--lc-bg);
+  /* subtle paper-grain texture instead of the heavy blueprint tiles */
+  background-image: var(--lc-paper-grain);
+  background-repeat: repeat;
+  background-size: 60px 60px;
+  color: var(--lc-text);
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand {
+  /* Keep headings modern; the brand wordmark uses a serif. */
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Brand wordmark in navbar uses a serif to match the business card */
+.navbar-brand {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  color: var(--lc-primary) !important;
+}
+
+/* Logo image sizing used in navbar header */
+.site-logo {
+  /* Make the header logo span the available header width responsively.
+     The image will scale to fit while preserving aspect ratio. Limit the
+     maximum width so it doesn't become excessively large on very wide screens,
+     and cap height to keep the header compact. */
+  display: block;
+  width: 100%;
+  max-width: 1200px;   /* allow a wide presence on large screens */
+  height: auto;
+  max-height: 140px;   /* prevents an overly tall header */
+  margin: 0 auto;      /* center inside navbar-brand */
+  object-fit: contain;
+}
+
+/* Make the navbar brand (logo) occupy the full width of the header and center the mark.
+   Navigation will wrap below the logo. This provides the 'stretched' or 'wrapped' visual.
+   On very small screens the logo scales down to avoid overwhelming the toggler. */
+.navbar .navbar-brand {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.navbar .navbar-brand .site-logo,
+.navbar .site-logo {
+  display: block;
+  width: 100%;
+  max-width: 1200px; /* allows wide logos to stretch across larger headers */
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Ensure nav toggler and collapse appear below the logo */
+.navbar .navbar-toggler {
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar .navbar-collapse {
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 1600px) {
+  /* very large screens get the full 1200px width */
+  .navbar .site-logo { max-width: 1200px; }
+}
+
+@media (min-width: 1200px) and (max-width: 1599.98px) {
+  .navbar .site-logo { max-width: 900px; }
+}
+
+@media (max-width: 1199.98px) {
+  /* medium screens show a centered, smaller logo */
+  .site-logo { max-width: 680px; }
+}
+
+@media (max-width: 991.98px) {
+  /* slightly smaller on medium screens */
+  .site-logo { max-width: 400px; max-height: 120px; }
+}
+
+@media (max-width: 767.98px) {
+  .site-logo { max-width: 220px; max-height: 88px; }
+}
+
+a {
+  color: var(--lc-primary);
+}
+
+a:hover {
+  color: var(--lc-secondary);
+}
+
+.bg-lc-primary { background-color: var(--lc-primary) !important; }
+.bg-lc-secondary { background-color: var(--lc-secondary) !important; }
+.text-lc-primary { color: var(--lc-primary) !important; }
+.text-lc-secondary { color: var(--lc-secondary) !important; }
+
+.btn-lc-cta {
+  /* Primary CTA uses the brand red from the card */
+  background-color: var(--lc-secondary);
+  border-color: var(--lc-secondary);
+  color: var(--lc-white);
+  font-weight: 700;
+}
+
+.btn-lc-cta:hover,
+.btn-lc-cta:focus {
+  background-color: #a61e1e;
+  border-color: #a61e1e;
+  color: var(--lc-white);
+}
+
+.btn-lc-outline {
+  /* Secondary / outline buttons use the card blue accent */
+  border: 2px solid var(--lc-accent);
+  color: var(--lc-accent);
+  font-weight: 700;
+}
+
+.btn-lc-outline:hover {
+  background-color: var(--lc-accent);
+  color: var(--lc-white);
+}
+
+.section-padding {
+  padding: 4rem 0;
+}
+
+.hero {
+  /* Use a cleaner hero: subtle dark overlay over a neutral background.
+     Swap the blueprint artwork for a before/after hero photo (no people) where available. */
+  position: relative;
+  background-color: #222; /* dark fallback for contrast */
+  background-repeat: no-repeat;
+  background-size: cover; /* fills the hero area when an image is provided */
+  background-position: center center;
+  color: var(--lc-white);
+  padding: 6rem 0;
+}
+
+/* Specific hero photo class: use external image URL (Unsplash hotlink used for quick preview). */
+.hero.hero-photo {
+  /* local hero image (added for deterministic preview) */
+  background-image: url('../images/hero-1.jpg');
+}
+
+/* overlay so hero text stays readable on top of the hero SVG */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(5,10,20,0.55), rgba(5,10,20,0.45));
+  z-index: 1;
+}
+
+.hero > .container { position: relative; z-index: 2; }
+
+/* Hero contact block styling */
+.hero-contact {
+  gap: 1rem;
+}
+.hero-contact .hero-phone {
+  color: var(--lc-secondary);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+.hero-contact .hero-phone:hover { text-decoration: underline; }
+.hero-contact .hero-email {
+  color: var(--lc-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.hero-contact .hero-email:hover { text-decoration: underline; }
+
+.card,
+.form-control,
+.form-select {
+  border: 0;
+  box-shadow: 0 0.2rem 1.25rem rgba(43, 43, 43, 0.08);
+  border-radius: 0.9rem;
+  /* make cards slightly translucent so the blueprint shows through subtly */
+  background-color: rgba(255,255,255,0.92);
+}
+
+.icon-circle {
+  .hero.hero-photo {
+    /* local hero image (added for deterministic preview) */
+    background-image: url('../images/home-renovation-hero-1600x900.jpg');
+    background-position: center top;
+  }
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(77, 161, 255, 0.15);
+  color: var(--lc-primary);
+  font-size: 1.25rem;
+}
+
+.project-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.placeholder-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: linear-gradient(120deg, #f7efe9, #eef2f6);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b6b6b;
+  font-weight: 700;
+  text-align: center;
+  padding: 1rem;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Footer logo small variant for branding in the footer */
+.footer-logo {
+  max-width: 140px;
+  height: auto;
+  display: inline-block;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
+.sticky-cta {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1020;
+}
+
+@media (max-width: 767.98px) {
+  .hero {
+    padding: 4.5rem 0;
+  }
+
+  .section-padding {
+    padding: 3rem 0;
+  }
+}
