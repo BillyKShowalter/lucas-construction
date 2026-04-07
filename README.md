@@ -60,6 +60,6 @@ If email variables are not configured, submissions still return success and can 
 ## Post-Launch Checklist
 
 - Replace sample project media with optimized WebP images from completed jobs.
-- Update company address, phone, email, and service area details.
+- Verify company address, phone, email, and service area details before go-live.
 - Add analytics snippet (for example Plausible) once domain is finalized.
 - Submit `sitemap.xml` to Google Search Console.
