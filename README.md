@@ -37,6 +37,7 @@ The contact form sends `POST /api/leads` with:
 - `company` (honeypot field)
 
 The function validates input, applies a best-effort in-memory rate limit, blocks honeypot spam, and optionally sends email through Resend.
+For production-grade distributed rate limiting across serverless cold starts, use a shared datastore or provider-native rate-limiting controls.
 
 ### Environment Variables
 

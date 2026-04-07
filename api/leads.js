@@ -63,6 +63,12 @@ function validatePayload(payload) {
 
 function checkRateLimit(ip) {
   const now = Date.now();
+  for (const [key, value] of rateLimitStore.entries()) {
+    if (now > value.resetAt) {
+      rateLimitStore.delete(key);
+    }
+  }
+
   const entry = rateLimitStore.get(ip) || { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
 
   if (now > entry.resetAt) {
