@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Lucas Construction</title>
+  <meta name="description" content="Request a quote from Lucas Construction for remodeling, roofing, additions, and residential construction projects.">
+  <meta property="og:title" content="Contact | Lucas Construction">
+  <meta property="og:description" content="Get in touch for a free quote.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.lucasconstructionco.com/contact.html">
+  <meta property="og:image" content="https://www.lucasconstructionco.com/assets/logo.svg">
+  <link rel="canonical" href="https://www.lucasconstructionco.com/contact.html">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script defer src="/js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="/" aria-label="Lucas Construction Home"><img src="/assets/logo.svg" alt="Lucas Construction logo" width="220" height="55"></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menu</button>
+      <ul class="nav-list" id="site-nav" data-nav-list>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a class="active" href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section>
+      <div class="container">
+        <p class="kicker">Contact</p>
+        <h1>Request your free quote.</h1>
+        <p>Fill out the form and our team will follow up quickly to discuss scope, timeline, and budget.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <form id="contactForm" class="panel form-grid" novalidate>
+          <div class="form-grid two">
+            <div>
+              <label for="name">Full Name *</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div>
+              <label for="phone">Phone *</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+            </div>
+            <div>
+              <label for="serviceType">Service Type *</label>
+              <select id="serviceType" name="serviceType" required>
+                <option value="">Select one</option>
+                <option>General Contracting</option>
+                <option>Kitchen Remodeling</option>
+                <option>Bathroom Remodeling</option>
+                <option>Roofing</option>
+                <option>Deck / Patio</option>
+                <option>Home Addition</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <div style="position: absolute; left: -10000px;" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="button" type="submit">Submit Request</button>
+          <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Lucas Construction</strong></p>
+      <p>123 Main Street, Your City, ST 00000</p>
+      <p><a href="tel:+15550104551">(555) 010-4551</a> • <a href="mailto:info@lucasconstructionco.com">info@lucasconstructionco.com</a></p>
+      <p>© <span data-current-year></span> Lucas Construction. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
