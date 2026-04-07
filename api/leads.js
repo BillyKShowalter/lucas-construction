@@ -28,6 +28,15 @@ function normalizeInput(value, maxLength = 3000) {
   return String(value || '').trim().slice(0, maxLength);
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function validatePayload(payload) {
   const name = normalizeInput(payload.name, 120);
   const email = normalizeInput(payload.email, 200);
@@ -76,6 +85,12 @@ async function sendLeadEmail(lead) {
     return;
   }
 
+  const safeName = escapeHtml(lead.name);
+  const safeEmail = escapeHtml(lead.email);
+  const safePhone = escapeHtml(lead.phone);
+  const safeServiceType = escapeHtml(lead.serviceType);
+  const safeMessage = escapeHtml(lead.message).replace(/\n/g, '<br>');
+
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -85,14 +100,14 @@ async function sendLeadEmail(lead) {
     body: JSON.stringify({
       from,
       to: [to],
-      subject: `New Lucas Construction Lead: ${lead.serviceType}`,
+      subject: `New Lucas Construction Lead: ${safeServiceType}`,
       html: `
         <h2>New Lead Submission</h2>
-        <p><strong>Name:</strong> ${lead.name}</p>
-        <p><strong>Email:</strong> ${lead.email}</p>
-        <p><strong>Phone:</strong> ${lead.phone}</p>
-        <p><strong>Service:</strong> ${lead.serviceType}</p>
-        <p><strong>Message:</strong><br>${lead.message.replace(/\n/g, '<br>')}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Phone:</strong> ${safePhone}</p>
+        <p><strong>Service:</strong> ${safeServiceType}</p>
+        <p><strong>Message:</strong><br>${safeMessage}</p>
       `
     })
   });
